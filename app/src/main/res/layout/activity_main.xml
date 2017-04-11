@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context="com.hedan.textviewdrawable.MainActivity">
+
+    <com.hedan.textdrawablelibrary.TextViewDrawable
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/dot_blue"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="请必须打电话预约!"
+        android:textColor="#000000"
+        app:isAliganCenter="false" />
+
+    <com.hedan.textdrawablelibrary.TextViewDrawable
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/dot_blue"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="每张美团券最多1位成人使用，身高1.4米以上儿童计入人数"
+        android:textColor="#000000"
+        app:isAliganCenter="false" />
+
+    <com.hedan.textdrawablelibrary.TextViewDrawable
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/dot_blue"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="孩童100-140CM半价，100CM以下收60元餐费。本团购使用时间为周一到周五的晚餐以及周末的午餐!每天限接待30份\n团购用户不可同时享受其他优惠"
+        android:textColor="#000000"
+        app:isAliganCenter="false"
+
+        />
+
+    <com.hedan.textdrawablelibrary.TextViewDrawable
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/dot_blue"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        app:isAliganCenter="false" />
+
+     <com.hedan.textdrawablelibrary.TextViewDrawable
+         android:padding="10dp"
+         android:layout_width="match_parent"
+         android:layout_height="55dp"
+         android:background="#eeeeee"
+         android:drawablePadding="10dp"
+         android:drawableLeft="@drawable/icon_tab_home_checked"
+         app:drawableLeftWidth="30dp"
+         app:drawableLeftHeight="30dp"
+         android:drawableRight="@drawable/iconfont_youjiantou"
+         app:drawableRightWidth="15dp"
+         app:drawableRightHeight="20dp"
+         android:textColor="#000000"
+         android:gravity="center_vertical"
+         android:text="首页"
+         android:textSize="20sp"
+         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+     <com.hedan.textdrawablelibrary.TextViewDrawable
+         android:layout_marginTop="20dp"
+        android:padding="10dp"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:background="#eeeeee"
+         android:drawablePadding="10dp"
+         android:drawableTop="@drawable/icon_tab_home_checked"
+         app:drawableTopWidth="30dp"
+         app:drawableTopHeight="30dp"
+         android:textColor="#000000"
+         android:gravity="center"
+         android:text="首页"
+         android:textSize="18sp"
+         />
+       <com.hedan.textdrawablelibrary.TextViewDrawable
+           android:layout_marginTop="20dp"
+           android:padding="10dp"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:background="#eeeeee"
+           android:drawablePadding="10dp"
+           android:drawableTop="@drawable/icon_tab_home_checked"
+           app:drawableTopWidth="30dp"
+           app:drawableTopHeight="30dp"
+           android:textColor="#000000"
+           android:gravity="center"
+           android:text="首页"
+           android:textSize="18sp"
+           />
+       <com.hedan.textdrawablelibrary.TextViewDrawable
+           android:layout_marginTop="20dp"
+           android:padding="10dp"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:background="#eeeeee"
+           android:drawablePadding="10dp"
+           android:drawableTop="@drawable/icon_tab_home_checked"
+           app:drawableTopWidth="30dp"
+           app:drawableTopHeight="30dp"
+           android:textColor="#000000"
+           android:gravity="center"
+           android:text="首页"
+           android:textSize="18sp"
+           />
+       <com.hedan.textdrawablelibrary.TextViewDrawable
+           android:layout_marginTop="20dp"
+           android:padding="10dp"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:background="#eeeeee"
+           android:drawablePadding="10dp"
+           android:drawableTop="@drawable/icon_tab_home_checked"
+           app:drawableTopWidth="30dp"
+           app:drawableTopHeight="30dp"
+           android:textColor="#000000"
+           android:gravity="center"
+           android:text="首页"
+           android:textSize="18sp"
+           />
+    </LinearLayout>
+
+</LinearLayout>
