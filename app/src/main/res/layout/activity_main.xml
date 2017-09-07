@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context="com.hedan.textviewdrawable.MainActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff"
+              android:orientation="vertical"
+              tools:context="com.hedan.textviewdrawable.MainActivity">
 
     <com.hedan.textdrawablelibrary.TextViewDrawable
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/dot_blue"
+        android:drawableBottom="@drawable/dot_blue"
         android:drawablePadding="10dp"
         android:padding="10dp"
         android:text="请必须打电话预约!"
         android:textColor="#000000"
-        app:isAliganCenter="false" />
+        app:isAliganCenter="true"/>
 
     <com.hedan.textdrawablelibrary.TextViewDrawable
         android:id="@+id/text2"
@@ -28,18 +28,18 @@
         android:padding="10dp"
         android:text="每张美团券最多1位成人使用，身高1.4米以上儿童计入人数"
         android:textColor="#000000"
-        app:isAliganCenter="false" />
+        app:isAliganCenter="true"/>
 
     <com.hedan.textdrawablelibrary.TextViewDrawable
         android:id="@+id/text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/dot_blue"
         android:drawablePadding="10dp"
+        android:drawableRight="@drawable/dot_blue"
         android:padding="10dp"
         android:text="孩童100-140CM半价，100CM以下收60元餐费。本团购使用时间为周一到周五的晚餐以及周末的午餐!每天限接待30份\n团购用户不可同时享受其他优惠"
         android:textColor="#000000"
-        app:isAliganCenter="false"
+        app:isAliganCenter="true"
 
         />
 
@@ -47,98 +47,103 @@
         android:id="@+id/text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/dot_blue"
         android:drawablePadding="10dp"
+        android:drawableTop="@drawable/dot_blue"
         android:padding="10dp"
         android:textColor="#000000"
-        app:isAliganCenter="false" />
+        app:isAliganCenter="true"
+        tools:text="jrebel和mirror的侧重点是不同的，它注重缩短应用整体的调试时间，走的仍旧是真机出结果的路线。而mirror目的是让开发者能实时预览UI，走的是UI独立测试的路线。总体来说这两款插件都挺不错的，这简直是给官方打脸啊。但因为jrebel太贵了，所以我还是推荐大家用mirro"/>
 
-     <com.hedan.textdrawablelibrary.TextViewDrawable
-         android:padding="10dp"
-         android:layout_width="match_parent"
-         android:layout_height="55dp"
-         android:background="#eeeeee"
-         android:drawablePadding="10dp"
-         android:drawableLeft="@drawable/icon_tab_home_checked"
-         app:drawableLeftWidth="30dp"
-         app:drawableLeftHeight="30dp"
-         android:drawableRight="@drawable/iconfont_youjiantou"
-         app:drawableRightWidth="15dp"
-         app:drawableRightHeight="20dp"
-         android:textColor="#000000"
-         android:gravity="center_vertical"
-         android:text="首页"
-         android:textSize="20sp"
-         />
+    <com.hedan.textdrawablelibrary.TextViewDrawable
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#eeeeee"
+        android:drawableLeft="@drawable/icon_tab_home_checked"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/icon_backs"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="首页1111"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:drawableLeftHeight="25dp"
+        app:drawableLeftWidth="25dp"
+        app:drawableRightHeight="15dp"
+        app:drawableRightWidth="15dp"
+        app:isAliganCenter="true"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-     <com.hedan.textdrawablelibrary.TextViewDrawable
-         android:layout_marginTop="20dp"
-        android:padding="10dp"
-         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:background="#eeeeee"
-         android:drawablePadding="10dp"
-         android:drawableTop="@drawable/icon_tab_home_checked"
-         app:drawableTopWidth="30dp"
-         app:drawableTopHeight="30dp"
-         android:textColor="#000000"
-         android:gravity="center"
-         android:text="首页"
-         android:textSize="18sp"
-         />
-       <com.hedan.textdrawablelibrary.TextViewDrawable
-           android:layout_marginTop="20dp"
-           android:padding="10dp"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:background="#eeeeee"
-           android:drawablePadding="10dp"
-           android:drawableTop="@drawable/icon_tab_home_checked"
-           app:drawableTopWidth="30dp"
-           app:drawableTopHeight="30dp"
-           android:textColor="#000000"
-           android:gravity="center"
-           android:text="首页"
-           android:textSize="18sp"
-           />
-       <com.hedan.textdrawablelibrary.TextViewDrawable
-           android:layout_marginTop="20dp"
-           android:padding="10dp"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:background="#eeeeee"
-           android:drawablePadding="10dp"
-           android:drawableTop="@drawable/icon_tab_home_checked"
-           app:drawableTopWidth="30dp"
-           app:drawableTopHeight="30dp"
-           android:textColor="#000000"
-           android:gravity="center"
-           android:text="首页"
-           android:textSize="18sp"
-           />
-       <com.hedan.textdrawablelibrary.TextViewDrawable
-           android:layout_marginTop="20dp"
-           android:padding="10dp"
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:background="#eeeeee"
-           android:drawablePadding="10dp"
-           android:drawableTop="@drawable/icon_tab_home_checked"
-           app:drawableTopWidth="30dp"
-           app:drawableTopHeight="30dp"
-           android:textColor="#000000"
-           android:gravity="center"
-           android:text="首页"
-           android:textSize="18sp"
-           />
+        <com.hedan.textdrawablelibrary.TextViewDrawable
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#eeeeee"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_tab_home_checked"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="首页"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:drawableTopHeight="30dp"
+            app:drawableTopWidth="30dp"
+            />
+
+        <com.hedan.textdrawablelibrary.TextViewDrawable
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#eeeeee"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_tab_home_checked"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="首页"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:drawableTopHeight="30dp"
+            app:drawableTopWidth="30dp"
+            />
+
+        <com.hedan.textdrawablelibrary.TextViewDrawable
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#eeeeee"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_tab_home_checked"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="首页"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:drawableTopHeight="30dp"
+            app:drawableTopWidth="30dp"
+            />
+
+        <com.hedan.textdrawablelibrary.TextViewDrawable
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#eeeeee"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_tab_home_checked"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="首页"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:drawableTopHeight="30dp"
+            app:drawableTopWidth="30dp"
+            />
     </LinearLayout>
 
 </LinearLayout>
