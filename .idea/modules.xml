@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TextViewDrawable.iml" filepath="$PROJECT_DIR$/TextViewDrawable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TextViewDrawable.iml" filepath="$PROJECT_DIR$/TextViewDrawable.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/textdrawablelibrary/textdrawablelibrary.iml" filepath="$PROJECT_DIR$/textdrawablelibrary/textdrawablelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/textdrawablelibrary/textdrawablelibrary.iml" filepath="$PROJECT_DIR$/textdrawablelibrary/textdrawablelibrary.iml" />
     </modules>
   </component>

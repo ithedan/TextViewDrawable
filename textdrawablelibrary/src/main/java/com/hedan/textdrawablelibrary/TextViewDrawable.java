@@ -2,7 +2,6 @@ package com.hedan.textdrawablelibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
@@ -14,11 +13,15 @@ import android.util.AttributeSet;
 
 public class TextViewDrawable extends AppCompatTextView {
 
-    private int drawableLeftWidth, drawableTopWidth, drawableRightWidth, drawableBottomWidth;
-    private int drawableLeftHeight, drawableTopHeight, drawableRightHeight, drawableBottomHeight;
-    private boolean isAliganCenter=true;
-    private boolean isDwMath_content=false;
-    private int mWidth, mHeight;
+
+    /**
+     * 是否居中对齐
+     */
+    private boolean isAlignCenter = true;
+
+    private Context mContext;
+    private DrawableSize mDrawablesSize[] = new DrawableSize[4];
+
 
     public TextViewDrawable(Context context) {
         this(context, null);
@@ -30,73 +33,73 @@ public class TextViewDrawable extends AppCompatTextView {
 
     public TextViewDrawable(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context, attrs, defStyleAttr);
+        this.mContext = context;
+        initView(attrs);
     }
 
-    private void initView(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TextViewDrawable);
-        drawableLeftWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableLeftWidth, 0);
-        drawableTopWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableTopWidth, 0);
-        drawableRightWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableRightWidth, 0);
-        drawableBottomWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableBottomWidth, 0);
-        drawableLeftHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableLeftHeight, 0);
-        drawableTopHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableTopHeight, 0);
-        drawableRightHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableRightHeight, 0);
-        drawableBottomHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableBottomHeight, 0);
-        isAliganCenter = typedArray.getBoolean(R.styleable.TextViewDrawable_isAliganCenter, true);
-        typedArray.recycle();
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-    }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mWidth = w;
-        mHeight = h;
         Drawable[] drawables = getCompoundDrawables();
-        Drawable drawableLeft = drawables[0];
-        Drawable drawableTop = drawables[1];
-        Drawable drawableRight = drawables[2];
-        Drawable drawableBottom = drawables[3];
-        if (drawableLeft != null) {
-            setDrawable(drawableLeft, 0, drawableLeftWidth, drawableLeftHeight);
+        for (int i = 0; i < drawables.length; i++) {
+            boolean isVerticalCenter = i % 2 == 0;
+            layoutDrawable(drawables[i], mDrawablesSize[i], isVerticalCenter);
         }
-        if (drawableTop != null) {
-            setDrawable(drawableTop, 1, drawableTopWidth, drawableTopHeight);
-        }
-        if (drawableRight != null) {
-            setDrawable(drawableRight, 2, drawableRightWidth, drawableRightHeight);
-        }
-        if (drawableBottom != null) {
-            setDrawable(drawableBottom, 3, drawableBottomWidth, drawableBottomHeight);
-        }
-        this.setCompoundDrawables(drawableLeft,drawableTop,drawableRight,drawableBottom);
+        this.setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
+
     }
 
-    private void setDrawable(Drawable drawable, int tag, int drawableWidth, int drawableHeight) {
-        //获取图片实际长宽
-        int width = drawableWidth == 0 ? drawable.getIntrinsicWidth() : drawableWidth;
-        int height = drawableHeight == 0 ? drawable.getIntrinsicHeight() : drawableHeight;
-        int left = 0, top = 0, right = 0, bottom = 0;
-        switch (tag) {
-            case 0:
-            case 2:
-                left = 0;
-                top = isAliganCenter ? 0 : -getLineCount() * getLineHeight() / 2 + getLineHeight() / 2;
-                right = width;
-                bottom = top + height;
-                break;
-            case 1:
-                left =isAliganCenter ? 0: -mWidth/2+width/2;
-                top = 0;
-                right = left+width;
-                bottom =top+height;
-                break;
+    private void layoutDrawable(Drawable drawable, DrawableSize drawableSize, boolean isVerticalCenter) {
+        if (drawable == null) return;
+        int width = drawableSize.width == 0 ? drawable.getIntrinsicWidth() : drawableSize.width;
+        int height = drawableSize.height == 0 ? drawable.getIntrinsicHeight() : drawableSize.height;
+        int left, top, right, bottom;
+        if (isVerticalCenter) {
+            left = 0;
+            top = isAlignCenter ? 0 : -getLineCount() * getLineHeight() / 2 + getLineHeight() / 2;
+            right = width;
+            bottom = top + height;
+        } else {
+            left = isAlignCenter ? 0 : width / 2;
+            top = 0;
+            right = left + width;
+            bottom = top + height;
         }
         drawable.setBounds(left, top, right, bottom);
+
+    }
+
+    private void initView(AttributeSet attrs) {
+        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.TextViewDrawable);
+        // 左边的宽度和高度
+        int drawableLeftWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableLeftWidth, 0);
+        int drawableLeftHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableLeftHeight, 0);
+        mDrawablesSize[0] = new DrawableSize(drawableLeftWidth, drawableLeftHeight);
+        //上面宽度和高度
+        int drawableTopWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableTopWidth, 0);
+        int drawableTopHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableTopHeight, 0);
+        mDrawablesSize[1] = new DrawableSize(drawableTopWidth, drawableTopHeight);
+        //右边的宽度和高度
+        int drawableRightWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableRightWidth, 0);
+        int drawableRightHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableRightHeight, 0);
+        mDrawablesSize[2] = new DrawableSize(drawableRightWidth, drawableRightHeight);
+        //下边的宽度和高度
+        int drawableBottomWidth = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableBottomWidth, 0);
+        int drawableBottomHeight = typedArray.getDimensionPixelSize(R.styleable.TextViewDrawable_drawableBottomHeight, 0);
+        mDrawablesSize[3] = new DrawableSize(drawableBottomWidth, drawableBottomHeight);
+        isAlignCenter = typedArray.getBoolean(R.styleable.TextViewDrawable_isAliganCenter, true);
+        typedArray.recycle();
+    }
+
+
+    static class DrawableSize {
+        public int width;
+        public int height;
+
+        DrawableSize(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
     }
 }
