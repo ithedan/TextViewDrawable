@@ -51,42 +51,51 @@ public class TextViewDrawable extends AppCompatTextView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
     }
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
+        //
         Drawable[] drawables = getCompoundDrawables();
         Drawable drawableLeft = drawables[0];
         Drawable drawableTop = drawables[1];
         Drawable drawableRight = drawables[2];
         Drawable drawableBottom = drawables[3];
-        if (drawableLeft != null) {
-            setDrawable(drawableLeft, 0, drawableLeftWidth, drawableLeftHeight);
-        }
-        if (drawableTop != null) {
-            setDrawable(drawableTop, 1, drawableTopWidth, drawableTopHeight);
-        }
-        if (drawableRight != null) {
-            setDrawable(drawableRight, 2, drawableRightWidth, drawableRightHeight);
-        }
-        if (drawableBottom != null) {
-            setDrawable(drawableBottom, 3, drawableBottomWidth, drawableBottomHeight);
-        }
         this.setCompoundDrawables(drawableLeft, drawableTop, drawableRight, drawableBottom);
+    }
+
+    @Override
+    public void setCompoundDrawables(@Nullable Drawable left, @Nullable Drawable top, @Nullable Drawable right, @Nullable Drawable bottom) {
+        //
+        if (mWidth != 0 && mHeight != 0) {
+            if (left != null) {
+                setDrawable(left, 0, drawableLeftWidth, drawableLeftHeight);
+            }
+            if (top != null) {
+                setDrawable(top, 1, drawableTopWidth, drawableTopHeight);
+            }
+            if (right != null) {
+                setDrawable(right, 2, drawableRightWidth, drawableRightHeight);
+            }
+            if (bottom != null) {
+                setDrawable(bottom, 3, drawableBottomWidth, drawableBottomHeight);
+            }
+        }
+        //
+        super.setCompoundDrawables(left, top, right, bottom);
     }
 
     private void setDrawable(Drawable drawable, int tag, int drawableWidth, int drawableHeight) {
         // 首先要有数据
-        if (getLineCount() == 0) {
+        if (getLineCount() == 0 || getLineCount() == 1) {
             return;
         }
         //获取图片实际长宽
         int mDrawableWidth = drawableWidth == 0 ? drawable.getIntrinsicWidth() : drawableWidth;
         int mDrawableHeight = drawableHeight == 0 ? drawable.getIntrinsicHeight() : drawableHeight;
         // view 的高度
-        int mViewHeight = getHeight();
+        int mViewHeight = getHeight() - getPaddingBottom() - getPaddingTop();
         // 行数、行高、行数*行高
         int mLineCount = getLineCount();
         int mLineHeight = getLineHeight();
