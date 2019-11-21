@@ -16,8 +16,8 @@ public class TextViewDrawable extends AppCompatTextView {
 
     private int drawableLeftWidth, drawableTopWidth, drawableRightWidth, drawableBottomWidth;
     private int drawableLeftHeight, drawableTopHeight, drawableRightHeight, drawableBottomHeight;
-    private boolean isAliganCenter=true;
-    private boolean isDwMath_content=false;
+    private boolean isAliganCenter = true;
+    private boolean isDwMath_content = false;
     private int mWidth, mHeight;
 
     public TextViewDrawable(Context context) {
@@ -74,27 +74,51 @@ public class TextViewDrawable extends AppCompatTextView {
         if (drawableBottom != null) {
             setDrawable(drawableBottom, 3, drawableBottomWidth, drawableBottomHeight);
         }
-        this.setCompoundDrawables(drawableLeft,drawableTop,drawableRight,drawableBottom);
+        this.setCompoundDrawables(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 
     private void setDrawable(Drawable drawable, int tag, int drawableWidth, int drawableHeight) {
+        // 首先要有数据
+        if (getLineCount() == 0) {
+            return;
+        }
         //获取图片实际长宽
-        int width = drawableWidth == 0 ? drawable.getIntrinsicWidth() : drawableWidth;
-        int height = drawableHeight == 0 ? drawable.getIntrinsicHeight() : drawableHeight;
+        int mDrawableWidth = drawableWidth == 0 ? drawable.getIntrinsicWidth() : drawableWidth;
+        int mDrawableHeight = drawableHeight == 0 ? drawable.getIntrinsicHeight() : drawableHeight;
+        // view 的高度
+        int mViewHeight = getHeight();
+        // 行数、行高、行数*行高
+        int mLineCount = getLineCount();
+        int mLineHeight = getLineHeight();
+        int mTextHeight = mLineCount * mLineHeight;
+        // 每行的offset
+        int mLineOffset = 0;
+        if (mViewHeight > mTextHeight) {
+            mLineOffset = (mViewHeight - mTextHeight) / mLineCount;
+        }
+        // 最终行高
+        int mFinalLineHeight = mLineHeight + mLineOffset;
+        //
         int left = 0, top = 0, right = 0, bottom = 0;
         switch (tag) {
             case 0:
             case 2:
+                // 中心点向上移动的 行 (mLineCount - 1) / 2.0f
+                // 1行 (1 - 1) / 2.0f) = 0 不移动
+                // 2行 (2 - 1) / 2.0f) = 0.5 移动0.5行
+                // 3行 (3 - 1) / 2.0f) = 1 移动1行
+                int moveTop = -(int) (((mLineCount - 1) / 2.0f) * mFinalLineHeight);
+                //
                 left = 0;
-                top = isAliganCenter ? 0 : -getLineCount() * getLineHeight() / 2 + getLineHeight() / 2;
-                right = width;
-                bottom = top + height;
+                top = isAliganCenter ? 0 : moveTop;
+                right = mDrawableWidth;
+                bottom = top + mDrawableHeight;
                 break;
             case 1:
-                left =isAliganCenter ? 0: -mWidth/2+width/2;
+                left = isAliganCenter ? 0 : -mWidth / 2 + mDrawableWidth / 2;
                 top = 0;
-                right = left+width;
-                bottom =top+height;
+                right = left + mDrawableWidth;
+                bottom = top + mDrawableHeight;
                 break;
         }
         drawable.setBounds(left, top, right, bottom);
